@@ -1,10 +1,10 @@
 //define initial state
 
 const initialState = {
-  // categories: [
-  //   { name: 'electronics', displayName: 'Electronics' },
-  //   { name: 'food', displayName: 'Food' },
-  // ],
+  categories: [
+    { name: 'electronics', displayName: 'Electronics' },
+    { name: 'food', displayName: 'Food' },
+  ],
   products: [
     { name: 'Monitor', category: 'electronics', price: 699.00, inStock: 5 },
     { name: 'Mouse', category: 'electronics', price: 99.00, inStock: 15 },
@@ -13,7 +13,7 @@ const initialState = {
     { name: 'carrots', category: 'food', price: 1.99, inStock: 120 },
     { name: 'Calzones', category: 'food', price: 4.39, inStock: 90 },
   ],
-  activeProduct: [],
+  activeCategory: 'electronics'
 
 }
 
@@ -23,9 +23,9 @@ export default (state = initialState, action) =>{
 
   switch (type) {
 
-    case 'PRODUCT':
+    case 'CATEGORY':
 
-    return {...state, activeProduct:payload}
+    return {...state, activeCategory:payload}
 
     default:
       return state;
@@ -33,9 +33,9 @@ export default (state = initialState, action) =>{
 } 
 
 // define action creators / action objs
-export const products = name =>{
+export const category = name =>{
   return {
-    type: 'PRODUCT',
+    type: 'CATEGORY',
     payload: name,
   }
 }

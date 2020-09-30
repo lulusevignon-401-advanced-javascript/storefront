@@ -38,7 +38,7 @@ const CurrentCategory = ({ activeCategory }) => {
 
 const mapStateToProps = state =>{
   return {
-    activeCategory: state.products.activeCategory,
+    activeCategory: state.categories.activeCategory,
   }
 }
 
