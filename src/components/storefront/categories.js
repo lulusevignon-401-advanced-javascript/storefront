@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Categories = props => {
-
+  console.log('my props', props.categories)
   // TODO: get props from redux store
   
 
@@ -24,8 +24,8 @@ const Categories = props => {
    
     <div className={classes.categories}>
       <Typography variant="h5">Browse our Categories</Typography>
-      {/* <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-        {props.categories.map(cat =>
+      <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
+        {props.categories.categories.map(cat =>
           <Button
             key={cat._id}
             color="primary"
@@ -34,7 +34,7 @@ const Categories = props => {
             {cat.displayName || cat.name}
           </Button>
         )}
-      </ButtonGroup> */}
+      </ButtonGroup>
     </div>
   );
 }
