@@ -55,12 +55,7 @@ const Products = props => {
   const products = props.store.products.filter(product => product.category === props.store.activeCategory)
 
   return (
-    // <ul>
-    //   <li>
-    //     Hello
-    //     {props.products.length}
-    //   </li>
-    // </ul>,
+   
   <>
        <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
