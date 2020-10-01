@@ -13,12 +13,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Categories = props => {
+export const Categories = props => {
   console.log('my props', props.categories)
   // TODO: get props from redux store
   
 
   const classes = useStyles();
+
+  useEffect (() =>{
+    category();
+  }, [category])
 
   return (
    
@@ -48,4 +52,5 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = { category }
 // Instead of exporing our component, export it after it's been connected to the Redux store.
+
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
