@@ -1,7 +1,9 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
@@ -26,9 +28,11 @@ const Header = props => {
       <Toolbar className={classes.toolbar}>
         <Grid container>
           <Grid item xs>
+          <Button component={Link} to="/">
             <Typography variant="h4">
               Our Store
             </Typography>
+            </Button>
           </Grid>
         </Grid>
       </Toolbar>
