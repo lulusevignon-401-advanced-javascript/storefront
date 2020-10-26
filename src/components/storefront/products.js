@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect }  from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { products } from '../../store/products'
-import { categories } from '../../store/categories'
+import { addToCart } from '../../store/cart.js';
+import { getProducts } from '../../store/products.js';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -34,78 +35,60 @@ const useStyles = makeStyles((theme) => ({
 
 const Products = props => {
 
-
-  props = {
-    store: {
-      products: [
-        {
-          name: 'name',
-          category: 'electronics',
-          description: 'description',
-        }
-      ],
-      activeCategory: 'electronics',
-    }
-  }
-
   const classes = useStyles();
 
-  // const products = props.products.filter(product => product.category === props.activeProduct)
+  const { activeCategory, products, addToCart, getProducts } = props;
 
-  const products = props.store.products.filter(product => product.category === props.store.activeCategory)
+  // re-fetch the product list whenever the activeCategory changes
+  useEffect(() => {
+    getProducts(activeCategory);
+  }, [activeCategory, getProducts]);
 
   return (
-   
-  <>
-       <Container className={classes.cardGrid} maxWidth="md">
+    <>
+      <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>
-           {products.map((product) => (
-             <Grid item key={product.name} xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
+          {products.map((product) => (
+            <Grid item key={product.name} xs={12} sm={6} md={4}>
+              <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                   image={`https://source.unsplash.com/random?${product.name}`}
+                  image={`https://source.unsplash.com/random?${product.name}`}
                   title={product.name}
                 />
                 <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h5" component="h2">
                     {product.name}
-                   </Typography>
-                   <Typography>
+                  </Typography>
+                  <Typography>
                     {product.description}
                   </Typography>
-                 </CardContent>
-                 <CardActions>
-                  <Button size="small" color="primary">
-                   Add To Cart
+                </CardContent>
+                <CardActions>
+                  <Button size="small" color="primary" onClick={() => addToCart(product)}>
+                    Add To Cart
                   </Button>
-                  <Button size="small" color="primary">
-                   View Details
+                  <Button size="small" color="primary" component={Link} to={`/product/${product._id}`}>
+                    View Details
                   </Button>
-               </CardActions>
-               </Card>
-             </Grid>
-           ))}
-         </Grid>
-       </Container>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 
 }
 
-const mapStateToProps = (state) =>{
-  return {
-  Product: state.products.products,
-  activeProduct: state.products.activeProduct,
-  }
-}
+const mapStateToProps = state => ({
+  products: state.products.productList,
+  activeCategory: state.categories.activeCategory
+});
 
+const mapDispatchToProps = { addToCart, getProducts };
 
-// Instead of exporing our component, export it after it's been connected to the Redux store.
-export default connect(mapStateToProps)(Products);
-
-// export default Products;
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
 
 

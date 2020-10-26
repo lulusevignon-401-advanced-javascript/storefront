@@ -1,5 +1,30 @@
 # Storefront
 
+## Author 
+Lulu Sevignon
+
+## Business Requirements
+Our application will power an online storefront that will allow our users to browse our product offerings by category, place items in their shopping cart, and check-out when they are ready to make their purchase
+
+## Key features
+
+- Display a list of our product categories
+- Display a listing of products for each category, when the category is selected
+- From the product listings:
+    - Click to view a full detail page about the product
+    - Add the product to your shopping cart
+- Shopping cart always visible on screen
+- Full shopping cart and check out screen available from main navigation
+
+## Technical requirements
+
+- React
+- ES6 Classes
+- Redux Store for Application State
+- Deployed API with Mongo storage for storing categories and products
+- Axios for performing API Requests
+- Material UI for layout and styling
+
 ## Phase 1 Requirements
 
 - As a user, I expect to see a list of available product categories in the store so that I can easily browse products

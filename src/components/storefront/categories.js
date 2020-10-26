@@ -5,7 +5,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { category } from '../../store/categories'
+import { category, getCategories } from '../../store/categories'
 
 const useStyles = makeStyles((theme) => ({
   categories: {
@@ -13,27 +13,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Categories = props => {
-  console.log('my props', props.categories)
-  // TODO: get props from redux store
-  
+const Categories = props => {
 
   const classes = useStyles();
 
-  useEffect (() =>{
-    category();
-  }, [category])
+  const { getCategories, category, categories, activeCategory } = props;
+
+  const loadCategories = useCallback(getCategories, [getCategories])
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   return (
-   
     <div className={classes.categories}>
       <Typography variant="h5">Browse our Categories</Typography>
       <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-        {props.categories.categories.map(cat =>
+        {categories.map(cat =>
           <Button
             key={cat._id}
-            color="primary"
-            onClick={() => props.category(cat.name)}
+            color={cat.name === activeCategory ? null : 'primary'}
+            onClick={() => category(cat.name)}
           >
             {cat.displayName || cat.name}
           </Button>
@@ -43,14 +43,11 @@ export const Categories = props => {
   );
 }
 
-const mapStateToProps = state =>{
-  return {
-    categories: state.categories,
-    // activeCategory: state.categories.activeCategory,
-  }
-}
+const mapStateToProps = state => ({
+  categories: state.categories.categoryList,
+  activeCategory: state.categories.activeCategory
+});
 
-const mapDispatchToProps = { category }
-// Instead of exporing our component, export it after it's been connected to the Redux store.
+const mapDispatchToProps = { category, getCategories };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
