@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { removeFromCart } from '../../store/cart';
 
-// import './simplecart.scss';
+import './cart.scss';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

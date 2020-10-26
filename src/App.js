@@ -3,7 +3,7 @@ import './App.css';
 import { Route } from "react-router-dom";
 import Categories from './components/storefront/categories.js';
 import CurrentCategory from './components/storefront/current-category';
-import Product from './components/storefront/products.js';
+import Product from './components/product/details.js';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import Storefront from './components/storefront/storefront.js';

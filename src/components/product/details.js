@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -153,7 +153,7 @@ const Product = ({ id, getProduct, addToCart, activeProduct }) => {
           <Typography variant="h4" gutterBottom={true}>Product Details</Typography>
           <ExpansionPanel className={classes.more} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
+              // expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header"
             >
@@ -169,7 +169,7 @@ const Product = ({ id, getProduct, addToCart, activeProduct }) => {
 
           <ExpansionPanel className={classes.more} expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
             <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon />}
+              // expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2bh-content"
               id="panel2bh-header"
             >
