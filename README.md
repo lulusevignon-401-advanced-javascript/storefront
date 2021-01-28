@@ -1,4 +1,12 @@
+<p align="center">
+  <a href="">
+    <img alt="react" src="./public/logo192.png" width="60" />
+  </a>
+</p>
+
 # Storefront
+
+<img alt="storefront" src="./public/storefront-bkground.png" width="470" />
 
 ## Author 
 Lulu Sevignon
